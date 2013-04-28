@@ -31,7 +31,8 @@ echo 'Running autogen.sh'
 export LOCAL_CONFIGURE_FLAGS="$LOCAL_CONFIGURE_FLAGS 'VARNISHSRC=debian/varnish-sources/$folder'"
 
 echo 'Building package...'
-dpkg-buildpackage -b -us -uc -tc
+# dpkg-buildpackage -b -us -uc -tc
+dpkg-buildpackage -F -tc
 echo 'Finished building package.'
 
 echo 'Cleaning'

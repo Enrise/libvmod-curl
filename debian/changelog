@@ -1,16 +1,11 @@
-varnish-vmod-curl (1.1.0-2) experimental; urgency=low
+varnish-vmod-curl (1.1.1-1) experimental; urgency=low
 
-  * Based on varnish 3.0.3-1
+  * Custom request headers, functions: header_add() and
+    header_unset();
+  * Based on varnish 3.0.2-1ubuntu0.1
+  * Built from https://github.com/Enrise/libvmod-curl @130340c
 
- -- Olivier Favre <olivier@yakaz.com>  Thu, 10 Jan 2013 11:17:11 +0100
-
-varnish-vmod-curl (1.1.0-1) experimental; urgency=low
-
-  * Custom request headers, using
-    https://github.com/lampeh/libvmod-curl@acd5733f14
-  * Based on varnish 3.0.2-2
-
- -- Olivier Favre <olivier@yakaz.com>  Wed, 09 Jan 2013 17:32:36 +0100
+ -- Dolf Schimmel <dolf@enrise.com>  Sun, 29 Apr 2013 18:00:00 +0100
 
 varnish-vmod-curl (1.0.0-1) experimental; urgency=low
 
