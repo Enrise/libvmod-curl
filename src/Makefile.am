@@ -4,7 +4,8 @@ vmoddir = $(VMODDIR)
 vmod_LTLIBRARIES = libvmod_curl.la
 
 libvmod_curl_la_CFLAGS = @CURL_CFLAGS@
-libvmod_curl_la_LDFLAGS = -module -export-dynamic -avoid-version @CURL_LIBS@
+#libvmod_curl_la_LDFLAGS = -module -export-dynamic -avoid-version @CURL_LIBS@ 
+libvmod_curl_la_LDFLAGS = -module -export-dynamic -avoid-version @CURL_LIBS@ -shared
 
 libvmod_curl_la_SOURCES = \
 	vcc_if.c \
