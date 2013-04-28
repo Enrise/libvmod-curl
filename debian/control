@@ -1,12 +1,16 @@
-Source: libvmod-example
+Source: varnish-vmod-curl
 Section: web
-Priority: extra
-Maintainer: Lasse Karstensen <lasse@varnish-software.com>
-Build-Depends: debhelper (>= 7), build-essential, python-docutils
-Standards-Version: 3.8.1
+Priority: optional
+Maintainer: Olivier Favre <olivier@yakaz.com>
+Uploaders: Olivier Favre <olivier@yakaz.com>
+Build-Depends: debhelper (>= 7.0.50~), libvarnishapi-dev (= ${VARNISH_VERSION})
+Standards-Version: 3.9.1
 Vcs-Git: git://github.com/varnish/libvmod-example.git
 
-Package: libvmod-example
-Architecture: all
-Depends: varnish, ${misc:Depends}
-Description: Example vmod for Varnish
+
+Package: varnish-vmod-curl
+Section: web
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libvarnishapi1 (= ${VARNISH_VERSION})
+Description: cURL module for Varnish
+ Varnish Module that provides cURL functionality.

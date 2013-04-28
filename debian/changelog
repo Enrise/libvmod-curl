@@ -1,5 +1,20 @@
-libvmod-example (0.1) unstable; urgency=low
+varnish-vmod-curl (1.1.0-2) experimental; urgency=low
 
-  * First version
+  * Based on varnish 3.0.3-1
 
- -- Lasse Karstensen <lasse@varnish-software.com>  Wed, 19 Sep 2012 15:03:00 +0200
+ -- Olivier Favre <olivier@yakaz.com>  Thu, 10 Jan 2013 11:17:11 +0100
+
+varnish-vmod-curl (1.1.0-1) experimental; urgency=low
+
+  * Custom request headers, using
+    https://github.com/lampeh/libvmod-curl@acd5733f14
+  * Based on varnish 3.0.2-2
+
+ -- Olivier Favre <olivier@yakaz.com>  Wed, 09 Jan 2013 17:32:36 +0100
+
+varnish-vmod-curl (1.0.0-1) experimental; urgency=low
+
+  * Initial release.
+  * Based on varnish 3.0.2-1
+
+ -- Olivier Favre <olivier@yakaz.com>  Thu, 16 Feb 2012 14:29:14 +0100
