@@ -1,4 +1,4 @@
-varnish-vmod-curl (1.1.1-1) experimental; urgency=low
+varnish-vmod-curl (1.1.1-enrise0) precise; urgency=low
 
   * Custom request headers, functions: header_add() and
     header_unset();
