@@ -28,7 +28,7 @@ make
 %install
 make install DESTDIR=%{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/%{name}/
-cp README %{buildroot}/usr/share/doc/%{name}/
+cp README.rst %{buildroot}/usr/share/doc/%{name}/README
 cp LICENSE %{buildroot}/usr/share/doc/%{name}/
 
 %clean

@@ -103,7 +103,8 @@ To build Varnish under CentOS::
 
 Then, to build the package::
 
-	rpmbuild -bb --define 'VARNISHSRC /root/Varnish-Cache' redhat/**spec
+	redhat/make-tarball
+	rpmbuild -bb --define 'VARNISHSRC /root/Varnish-Cache' redhat/*spec
 
 If all went well, your RPM's will have ended up somewhere in `/root/rpmbuild/RPMS/x86_64`
 
