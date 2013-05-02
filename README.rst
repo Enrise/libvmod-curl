@@ -92,7 +92,8 @@ the Varnish build instructions for a complete how-to. After that you
 can build the packages.
 
 To build Varnish under CentOS::
-	yum install rpm-build redhat-rpm-config make gcc git yum-utils libtool pcre-devel
+
+	yum install rpm-build redhat-rpm-config make gcc git yum-utils libtool pcre-devel python-docutils curl-devel
 	git clone -o upstream git://github.com/varnish/Varnish-Cache.git
 	cd Varnish-Cache
 	git checkout varnish-3.0.2
@@ -101,6 +102,7 @@ To build Varnish under CentOS::
 	make
 
 Then, to build the package::
+
 	rpmbuild -bb --define 'VARNISHSRC /root/Varnish-Cache' redhat/\*spec
 
 If all went well, your RPM's will have ended up somewhere in `/root/rpmbuild/RPMS/x86_64`
