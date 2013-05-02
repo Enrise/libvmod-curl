@@ -1,10 +1,10 @@
-============
-vmod_example
-============
+=========
+vmod_curl
+=========
 
-----------------------
-Varnish Example Module
-----------------------
+-------------------
+Varnish Curl Module
+-------------------
 
 :Author: Martin Blix Grydeland
 :Date: 2011-05-26
@@ -14,42 +14,22 @@ Varnish Example Module
 SYNOPSIS
 ========
 
-import example;
+import curl;
 
 DESCRIPTION
 ===========
 
-Example Varnish vmod demonstrating how to write an out-of-tree Varnish vmod
-for Varnish 3.0 and later.
+This vmod provides cURL bindings for Varnish so you can use Varnish
+as an HTTP client and fetch headers and bodies from backends.
 
-Implements the traditional Hello World as a vmod.
 
 FUNCTIONS
 =========
 
-hello
------
-
-Prototype
-        ::
-
-                hello(STRING S)
-Return value
-	STRING
-Description
-	Returns "Hello, " prepended to S
-Example
-        ::
-
-                set resp.http.hello = example.hello("World");
+Please see man/vmod_curl.rst
 
 INSTALLATION
 ============
-
-This is an example skeleton for developing out-of-tree Varnish
-vmods available from the 3.0 release. It implements the "Hello, World!" 
-as a vmod callback. Not particularly useful in good hello world 
-tradition,but demonstrates how to get the glue around a vmod working.
 
 The source tree is based on autotools to configure the building, and
 does also have the necessary bits in place to do functional unit tests
@@ -75,18 +55,56 @@ Make targets:
 
 In your VCL you could then use this vmod along the following lines::
         
-        import example;
+	import curl;
 
-        sub vcl_deliver {
-                # This sets resp.http.hello to "Hello, World"
-                set resp.http.hello = example.hello("World");
-        }
+	sub vcl_recv {
+	    curl.fetch("http://example.com/test");
+	    if (curl.header("X-Foo") == "bar") {
+	        …
+	    }
+	    curl.free();
+	}
 
 HISTORY
 =======
 
-This manual page was released as part of the libvmod-example package,
-demonstrating how to create an out-of-tree Varnish vmod.
+Development of this VMOD has been sponsored by the Norwegian company
+Aspiro Music AS for usage on their WiMP music streaming service.
+
+PACKAGING
+=========
+
+DEBIAN / UBUNTU
+---------------
+
+To build the Debian package::
+	./mk-debian-binarypackage.sh
+
+The use of this shell script is not ideal as it does not allow Canonical to build a package
+(which it attempts to do based on source packages). If you fix this, we will gladly accept
+your Pull Request =)
+
+REDHAT / CENTOS
+---------------
+
+To package this vmod you need to build Varnish first. Please refer to
+the Varnish build instructions for a complete how-to. After that you
+can build the packages.
+
+To build Varnish under CentOS::
+	yum install rpm-build redhat-rpm-config make gcc git yum-utils libtool pcre-devel
+	git clone -o upstream git://github.com/varnish/Varnish-Cache.git
+	cd Varnish-Cache
+	git checkout varnish-3.0.2
+	./autogen.sh
+	./configure
+	make
+
+Then, to build the package::
+	rpmbuild -bb --define 'VARNISHSRC /root/Varnish-Cache' redhat/\*spec
+
+If all went well, your RPM's will have ended up somewhere in `/root/rpmbuild/RPMS/x86_64`
+
 
 COPYRIGHT
 =========
